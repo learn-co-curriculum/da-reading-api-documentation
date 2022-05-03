@@ -1,4 +1,3 @@
-
 # Reading API Documentation
 
 ## Introduction 
@@ -29,7 +28,7 @@ https://www.yelp.com/developers/documentation/v3/authentication
 Notice in the documentation, it gives us the specific format "Put the API Key in the request header as "Authorization: Bearer <YOUR API KEY>"." This is what we passed in our get request.   
 
 
-Before we do this, let's import your authentication token which you have appropriately stored in **a separate file** from the codealong before.
+Before we do this, let's import your authentication token which you have appropriately stored in a separate file from the codealong before.
 
 
 ```python
@@ -41,16 +40,12 @@ def get_keys(path):
         return json.load(f)
 ```
 
-> **Note**: Like before, change the file path below to be your root directory. 
-If you're not sure what your username is, check it with `pwd`  
-For example, my current working directory is ```/Users/matthew.mitchell/Documents/dsc-using-yelp-api-codealong```  
-So the line below would become:
-```keys = get_keys("/Users/matthew.mitchell/.secret/yelp_api.json")```
+> **Note**: Like before, the file path is to the `secret` folder you created in the previous codealong.
 
 
 
 ```python
-keys = get_keys("/Users/YOUR_USERNAME_HERE/.secret/yelp_api.json")
+keys = get_keys("../secret/yelp_api.json")
 
 api_key = keys['api_key']
 
