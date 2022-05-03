@@ -1,4 +1,3 @@
-
 # Reading API Documentation
 
 ## Introduction 
@@ -29,7 +28,37 @@ https://www.yelp.com/developers/documentation/v3/authentication
 Notice in the documentation, it gives us the specific format "Put the API Key in the request header as "Authorization: Bearer <YOUR API KEY>"." This is what we passed in our get request.   
 
 
-Before we do this, let's import your authentication token which you have appropriately stored in **a separate file** from the codealong before.
+Before we do this, let's store your authentication token which you used from the codealong before **in a separate file**.
+
+#### Create a `.secret/` directory
+
+
+```python
+!mkdir .secret
+```
+
+#### Ensure it was created correctly
+
+
+```python
+!ls -a
+```
+
+#### Store your API key in a `.json` file
+
+In the cell below, replace `<YOUR_API_KEY>` with the API key you were given by yelp. Once again, it is recommnended you delete this cell once you make sure your API key was stored and imported correctly
+
+
+```python
+!echo '{"api_key": "<YOUR_API_KEY>"}' >> yelp_api.json
+```
+
+#### Move `yelp_api.json` to `.secret/` directory
+
+
+```python
+!mv yelp_api.json .secret/
+```
 
 
 ```python
@@ -41,16 +70,12 @@ def get_keys(path):
         return json.load(f)
 ```
 
-> **Note**: Like before, change the file path below to be your root directory. 
-If you're not sure what your username is, check it with `pwd`  
-For example, my current working directory is ```/Users/matthew.mitchell/Documents/dsc-using-yelp-api-codealong```  
-So the line below would become:
-```keys = get_keys("/Users/matthew.mitchell/.secret/yelp_api.json")```
+> **Note**: Like before, we have provided the file path to the `.json` file for you below
 
 
 
 ```python
-keys = get_keys("/Users/YOUR_USERNAME_HERE/.secret/yelp_api.json")
+keys = get_keys("./.secret/yelp_api.json")
 
 api_key = keys['api_key']
 
